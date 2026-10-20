@@ -63,6 +63,8 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          EDGECHAT_D1_DATABASE_NAME: ${{ vars.EDGECHAT_D1_DATABASE_NAME || 'cfchat-db' }}
+          EDGECHAT_R2_BUCKET_NAME: ${{ vars.EDGECHAT_R2_BUCKET_NAME || 'cfchat-files' }}
           EDGECHAT_KV_NAMESPACE_TITLE: ${{ vars.EDGECHAT_KV_NAMESPACE_TITLE || 'cfchat-sessions' }}
         run: node .github/scripts/ensure-cloudflare-resources.mjs
       - name: Generate wrangler config for CI
